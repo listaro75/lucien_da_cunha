@@ -477,6 +477,11 @@ nav {
     .lang-prefix {
         font-size: 0.525rem !important; /* 0.75 * 0.7 */
     }
+    
+    /* Réduction de l'espacement des liens de navigation de 50% */
+    .nav-links {
+        gap: 0.25rem !important; /* 0.5 * 0.5 */
+    }
 }
 
 .nav-links {
