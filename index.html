@@ -12,25 +12,35 @@
     <header>
         <nav>
             <div class="logo" id="logo">LD</div>
-            <ul class="nav-links">
-                <li><a href="#accueil" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
-                <li><a href="#a-propos" class="nav-link" data-fr="À propos" data-en="About">À propos</a></li>
-                <li><a href="#diplomes" class="nav-link" data-fr="Diplômes" data-en="Diplomas">Diplômes</a></li>
-                <li><a href="#competences" class="nav-link" data-fr="Compétences" data-en="Skills">Compétences</a></li>
-                <li><a href="#projets" class="nav-link" data-fr="Projets" data-en="Projects">Projets</a></li>
-                <li><a href="#contact" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <a href="assets/cv.pdf" download class="btn-cv" data-fr="Télécharger CV" data-en="Download CV">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M8 12L3 7L4.4 5.6L7 8.2V0H9V8.2L11.6 5.6L13 7L8 12Z" fill="currentColor"/>
-                        <path d="M0 14H16V16H0V14Z" fill="currentColor"/>
-                    </svg>
-                    Télécharger CV
-                </a>
-                <div class="language-switcher">
-                    <button class="lang-btn active" data-lang="fr">FR</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
+            
+            <!-- Menu Hamburger Button -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-links">
+                    <li><a href="#accueil" class="nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                    <li><a href="#a-propos" class="nav-link" data-fr="À propos" data-en="About">À propos</a></li>
+                    <li><a href="#diplomes" class="nav-link" data-fr="Diplômes" data-en="Diplomas">Diplômes</a></li>
+                    <li><a href="#competences" class="nav-link" data-fr="Compétences" data-en="Skills">Compétences</a></li>
+                    <li><a href="#projets" class="nav-link" data-fr="Projets" data-en="Projects">Projets</a></li>
+                    <li><a href="#contact" class="nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="assets/cv.pdf" download class="btn-cv" data-fr="Télécharger CV" data-en="Download CV">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 12L3 7L4.4 5.6L7 8.2V0H9V8.2L11.6 5.6L13 7L8 12Z" fill="currentColor"/>
+                            <path d="M0 14H16V16H0V14Z" fill="currentColor"/>
+                        </svg>
+                        Télécharger CV
+                    </a>
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="fr">FR</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
                 </div>
             </div>
         </nav>

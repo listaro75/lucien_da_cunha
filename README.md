@@ -99,6 +99,30 @@ lucien_da_cunha/
 - Ordre chronologique du plus ancien (2019) au plus récent (2024)
 - Design épuré sans emojis
 - **Correction du fichier HTML corrompu** : reconstruction complète du fichier avec structure propre
+- **Amélioration du responsive mobile** :
+  - Navigation verticale sur mobile
+  - Timeline adaptée avec ligne à gauche
+  - Textes et espacements optimisés pour petits écrans
+  - Support des téléphones en mode portrait et paysage
+  - Breakpoints pour différentes tailles (768px, 480px)
+  - Grilles en une colonne sur mobile
+- **Menu hamburger** :
+  - Bouton hamburger animé (3 lignes → X)
+  - Menu latéral qui slide depuis la droite
+  - Overlay sombre pour fermer le menu
+  - Menu se ferme au clic sur un lien
+  - Animation fluide avec backdrop-filter
+  - Navigation optimisée pour mobile
+- **Amélioration de la navbar desktop** :
+  - Design plus moderne et épuré
+  - Logo agrandi avec bordure subtile
+  - Liens avec effets hover élégants (ligne animée en bas)
+  - Bouton CV noir avec effet de brillance au survol
+  - Sélecteur de langue avec fond noir actif
+  - Header qui change d'opacité au scroll
+  - Espacements optimisés
+  - Ombres et effets plus subtils
+  - Typographie améliorée
 
 ---
 

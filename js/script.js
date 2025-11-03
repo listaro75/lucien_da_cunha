@@ -1,3 +1,51 @@
+// ===== Menu Hamburger =====
+const hamburger = document.getElementById('hamburger');
+const navContainer = document.getElementById('navContainer');
+const navLinks = document.querySelectorAll('.nav-link');
+const header = document.querySelector('header');
+
+// Effet de scroll sur le header
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+if (hamburger && navContainer) {
+    // Toggle menu
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hamburger.classList.toggle('active');
+        navContainer.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    });
+
+    // Fermer le menu quand on clique sur un lien
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navContainer.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+    });
+
+    // Fermer le menu quand on clique en dehors
+    document.addEventListener('click', (e) => {
+        if (!navContainer.contains(e.target) && !hamburger.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navContainer.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+
+    // Empêcher la propagation du clic dans le menu
+    navContainer.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+}
+
 // ===== Effet de lumière sur le logo =====
 const logo = document.getElementById('logo');
 
@@ -18,9 +66,10 @@ if (logo) {
 }
 
 // ===== Effet de lumière sur les liens de navigation =====
-const navLinks = document.querySelectorAll('.nav-link');
+// Utilisation de la variable navLinks déjà déclarée plus haut
 
 navLinks.forEach(link => {
+    // Effet de lumière au hover
     link.addEventListener('mousemove', (e) => {
         const rect = link.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
