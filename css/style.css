@@ -271,11 +271,58 @@ nav {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    padding: 1rem 3%;
+    padding: 0.8rem 2%;
     max-width: 1800px;
     margin: 0 auto;
-    gap: 2rem;
+    gap: 1.5rem;
     position: relative;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--terminal-green);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    background: transparent;
+    letter-spacing: 0;
+    text-shadow: 0 0 5px var(--terminal-green);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    border: 1px solid transparent;
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+}
+
+.nav-prefix {
+    color: var(--terminal-green-light);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.nav-text {
+    color: var(--terminal-green);
+    font-size: 0.8rem;
 }
 
 /* ===== Hamburger Menu ===== */
@@ -2200,6 +2247,79 @@ footer {
 }
 
 /* ===== Responsive ===== */
+
+/* Medium screens (tablettes et petits laptops) */
+@media (max-width: 1200px) {
+    nav {
+        padding: 0.8rem 2%;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        gap: 0.3rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+        gap: 0.2rem;
+    }
+    
+    .nav-prefix {
+        font-size: 0.75rem;
+    }
+    
+    .nav-text {
+        font-size: 0.75rem;
+    }
+    
+    .nav-actions {
+        gap: 0.8rem;
+    }
+    
+    .social-link {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.65rem;
+    }
+    
+    .btn-cv {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+    
+    .lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Tablets (iPad, etc.) */
+@media (max-width: 1024px) {
+    nav {
+        grid-template-columns: auto 1fr;
+        gap: 0.5rem;
+    }
+    
+    .nav-links {
+        gap: 0.2rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.5rem;
+    }
+    
+    .nav-actions {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: flex-end;
+    }
+    
+    .social-links {
+        gap: 0.3rem;
+    }
+}
+
 @media (max-width: 768px) {
     /* Hamburger visible sur mobile - à droite */
     .hamburger {
