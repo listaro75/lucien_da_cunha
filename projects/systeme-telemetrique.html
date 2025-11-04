@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Système Télémetrique - Drone de surveillance autonome">
+    <title>Système Télémetrique | Lucien Da Cunha</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Effet Matrix Rain Global -->
+    <div class="matrix-rain-bg"></div>
+    
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <!-- Menu Hamburger Button (à gauche sur mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <div class="logo" id="logo">
+                <span class="logo-prompt">root@telemetrie:~$</span>
+                <span class="logo-text">LD</span>
+            </div>
+
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-links">
+                    <li><a href="../index.html#accueil" class="nav-link" data-fr="~/home" data-en="~/home"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Accueil" data-en="Home">Accueil</span></a></li>
+                    <li><a href="../index.html#a-propos" class="nav-link" data-fr="about.txt" data-en="about.txt"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="À propos" data-en="About">À propos</span></a></li>
+                    <li><a href="../index.html#diplomes" class="nav-link" data-fr="diplomes/" data-en="diplomas/"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Diplômes" data-en="Diplomas">Diplômes</span></a></li>
+                    <li><a href="../index.html#competences" class="nav-link" data-fr="./skills.sh" data-en="./skills.sh"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Compétences" data-en="Skills">Compétences</span></a></li>
+                    <li><a href="../index.html#projets" class="nav-link" data-fr="git log" data-en="git log"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Projets" data-en="Projects">Projets</span></a></li>
+                    <li><a href="../index.html#contact" class="nav-link" data-fr="mail -s" data-en="mail -s"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Contact" data-en="Contact">Contact</span></a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="social-links">
+                        <a href="https://github.com/Lucien-Da-Cunha" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" data-terminal="github">
+                            <span class="terminal-label">git://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lucien-da-cunha-69b300227/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" data-terminal="linkedin">
+                            <span class="terminal-label">https://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="../assets/cv.pdf" download class="btn-cv" data-fr="wget cv.pdf" data-en="wget cv.pdf">
+                        <span class="btn-prefix">$</span>
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 12L3 7L4.4 5.6L7 8.2V0H9V8.2L11.6 5.6L13 7L8 12Z" fill="currentColor"/>
+                            <path d="M0 14H16V16H0V14Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <div class="language-switcher">
+                        <button class="lang-btn" data-lang="fr">
+                            <span class="lang-prefix">--lang=</span>FR
+                        </button>
+                        <button class="lang-btn active" data-lang="en">
+                            <span class="lang-prefix">--lang=</span>EN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Projet Hero -->
+    <section class="project-hero section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~$ cd projects/systeme-telemetrique/</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="terminal-command">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/systeme-telemetrique</span>$ ls -la
+                    </p>
+                    <div class="project-info">
+                        <h1 class="project-title">Système Télémetrique</h1>
+                        <p class="project-description">Drone de surveillance autonome avec transmission de données en temps réel</p>
+                        <div class="project-meta">
+                            <span class="project-date">📅 Octobre 2024</span>
+                            <span class="project-tech">🛠️ Arduino, C++, Python, IoT</span>
+                            <span class="project-status">📊 En cours - Prototype fonctionnel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Onglets Projet -->
+    <section class="project-tabs section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~/projects/systeme-telemetrique$ ./explore.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <!-- Navigation des onglets -->
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="detail">
+                            <span class="terminal-prompt">$</span> cat README.md
+                        </button>
+                        <button class="tab-btn" data-tab="code">
+                            <span class="terminal-prompt">$</span> ls src/
+                        </button>
+                        <button class="tab-btn" data-tab="images">
+                            <span class="terminal-prompt">$</span> find . -name "*.jpg"
+                        </button>
+                    </div>
+
+                    <!-- Contenu des onglets -->
+                    <div class="tabs-content">
+                        <!-- Onglet Détail -->
+                        <div class="tab-content active" id="detail">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/systeme-telemetrique</span>$ cat README.md
+                                </p>
+                            </div>
+                            <div class="project-detail">
+                                <h3>📋 Description détaillée</h3>
+                                <p>Développement d'un système de télémétrie embarqué pour drone de surveillance. Le projet combine hardware (Arduino, capteurs) et software (traitement de données, interface web) pour créer une solution complète de surveillance autonome avec transmission temps réel.</p>
+                                
+                                <h3>🎯 Objectifs</h3>
+                                <ul>
+                                    <li>Collecter des données environnementales (GPS, température, altitude)</li>
+                                    <li>Transmettre les données via WiFi/LoRa en temps réel</li>
+                                    <li>Interface web pour visualisation et contrôle</li>
+                                    <li>Système d'alerte automatique</li>
+                                    <li>Autonomie de vol de 30 minutes minimum</li>
+                                </ul>
+                                
+                                <h3>⚙️ Technologies utilisées</h3>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Arduino</span>
+                                    <span class="tech-tag">C++</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Flask</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">WiFi/LoRa</span>
+                                </div>
+                                
+                                <h3>🔗 Liens</h3>
+                                <div class="project-links">
+                                    <a href="https://github.com/Lucien-Da-Cunha/systeme-telemetrique" target="_blank" class="project-link">
+                                        <span class="terminal-prompt">$</span> git clone https://github.com/Lucien-Da-Cunha/systeme-telemetrique.git
+                                    </a>
+                                    <a href="#" target="_blank" class="project-link">
+                                        <span class="terminal-prompt">$</span> open demo (bientôt disponible)
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Code -->
+                        <div class="tab-content" id="code">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/systeme-telemetrique</span>$ tree src/
+                                </p>
+                            </div>
+                            <div class="project-code">
+                                <h3>📁 Structure du projet</h3>
+                                <div class="file-tree">
+                                    <pre class="code-block">
+systeme-telemetrique/
+├── arduino/
+│   ├── main.ino
+│   ├── sensors.cpp
+│   └── wifi_module.cpp
+├── server/
+│   ├── app.py
+│   ├── data_processor.py
+│   └── websocket_handler.py
+├── web/
+│   ├── index.html
+│   ├── dashboard.js
+│   └── style.css
+└── docs/
+    ├── schematic.pdf
+    └── README.md
+                                    </pre>
+                                </div>
+                                
+                                <h3>💻 Code Arduino - Collecte de données</h3>
+                                <div class="code-section">
+                                    <div class="code-header">
+                                        <span class="file-name">sensors.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode('sensors-code')">Copy</button>
+                                    </div>
+                                    <pre class="code-block" id="sensors-code">
+<code>#include "sensors.h"
+
+void Sensors::init() {
+    gps.begin(9600);
+    dht.begin();
+    bmp.begin();
+    Serial.println("Sensors initialized");
+}
+
+TelemetryData Sensors::getData() {
+    TelemetryData data;
+    
+    // GPS data
+    if (gps.available()) {
+        data.latitude = gps.location.lat();
+        data.longitude = gps.location.lng();
+        data.altitude = gps.altitude.meters();
+    }
+    
+    // Environmental data
+    data.temperature = dht.readTemperature();
+    data.humidity = dht.readHumidity();
+    data.pressure = bmp.readPressure() / 100.0F;
+    
+    data.timestamp = millis();
+    return data;
+}</code>
+                                    </pre>
+                                </div>
+                                
+                                <h3>🌐 Serveur Python - Traitement des données</h3>
+                                <div class="code-section">
+                                    <div class="code-header">
+                                        <span class="file-name">app.py</span>
+                                        <button class="copy-btn" onclick="copyCode('server-code')">Copy</button>
+                                    </div>
+                                    <pre class="code-block" id="server-code">
+<code>from flask import Flask, render_template, jsonify
+from flask_socketio import SocketIO, emit
+import json
+import datetime
+
+app = Flask(__name__)
+socketio = SocketIO(app, cors_allowed_origins="*")
+
+@app.route('/')
+def dashboard():
+    return render_template('dashboard.html')
+
+@socketio.on('telemetry_data')
+def handle_telemetry(data):
+    # Process and validate incoming telemetry
+    processed_data = {
+        'latitude': float(data['lat']),
+        'longitude': float(data['lng']),
+        'altitude': float(data['alt']),
+        'temperature': float(data['temp']),
+        'timestamp': datetime.datetime.now().isoformat()
+    }
+    
+    # Broadcast to all connected clients
+    emit('update_dashboard', processed_data, broadcast=True)
+    
+if __name__ == '__main__':
+    socketio.run(app, host='0.0.0.0', port=5000)</code>
+                                    </pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Images -->
+                        <div class="tab-content" id="images">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/systeme-telemetrique</span>$ find . -name "*.jpg" -o -name "*.png"
+                                </p>
+                            </div>
+                            <div class="project-images">
+                                <div class="images-grid">
+                                    <div class="image-item">
+                                        <img src="../assets/projects/drone-prototype.jpg" alt="Prototype du drone" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>drone_prototype.jpg
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/dashboard-web.png" alt="Interface web dashboard" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>web_dashboard.png
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/circuit-board.jpg" alt="Circuit imprimé" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>circuit_board.jpg
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/flight-test.jpg" alt="Test de vol" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>flight_test.jpg
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/data-visualization.png" alt="Visualisation des données" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>data_viz.png
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/schematic.png" alt="Schéma électronique" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>schematic.png
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="terminal-cursor">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/systeme-telemetrique</span>$ <span class="cursor-blink">_</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour les images -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>$ echo "&copy; 2025 Lucien Da Cunha. Tous droits réservés." | cat</p>
+    </footer>
+
+    <!-- Bouton Mode Confort -->
+    <button id="colorModeBtn" class="color-mode-btn" title="Mode confort">
+        <span class="mode-icon">●</span>
+        <span class="mode-label">Soft</span>
+    </button>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

@@ -69,8 +69,8 @@
   - Total : 16 projets (5 personnels + 2 scolaires + 9 École 42)
 - **Projets Professionnels ajoutés (17-18)** :
   - Vente de Lampes 3D (catégorie Professionnel)
-    * Création et commercialisation de lampes 3D
-    * Tags : Impression 3D, Commerce, Design
+    * Création et impression de lampes 3D personnalisées avec des modèles originaux
+    * Tags : Impression 3D, Création, Design
   - ZonArt (catégorie Professionnel)
     * Coalition de 5 créateurs multi-domaines
     * Prestations professionnelles variées
@@ -91,8 +91,8 @@
   - Support bilingue FR/EN
   - Responsive mobile
 - **Liens sociaux dans la navigation** :
-  - Icône GitHub (lien vers https://github.com/listaro75)
-  - Icône LinkedIn (lien vers https://www.linkedin.com/in/lucien-da-cunha/)
+  - Icône GitHub (lien vers https://github.com/Lucien-Da-Cunha)
+  - Icône LinkedIn (lien vers https://www.linkedin.com/in/lucien-da-cunha-69b300227/)
   - Design glassmorphism avec effets hover
   - Séparateur visuel avant le bouton CV
   - Responsive mobile avec styles adaptés

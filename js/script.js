@@ -21,9 +21,34 @@ function typeWriter() {
     }
 }
 
-// Démarrer l'animation au chargement de la page
+function hideLoaderImmediately() {
+    // Masquer immédiatement le loader sans animation
+    if (loader) {
+        loader.style.display = 'none';
+        loader.remove();
+    }
+}
+
+// Vérifier si c'est la première visite de la session
+function isFirstVisit() {
+    return !sessionStorage.getItem('hasVisited');
+}
+
+// Marquer que l'utilisateur a visité le site
+function markAsVisited() {
+    sessionStorage.setItem('hasVisited', 'true');
+}
+
+// Démarrer l'animation au chargement de la page seulement si c'est la première visite
 window.addEventListener('load', () => {
-    setTimeout(typeWriter, 300); // Petit délai avant de commencer
+    if (isFirstVisit()) {
+        // Première visite : animation "Hello World"
+        setTimeout(typeWriter, 300);
+        markAsVisited();
+    } else {
+        // Retour sur le site : masquer immédiatement le loader
+        hideLoaderImmediately();
+    }
 });
 
 // ===== Menu Hamburger =====
@@ -413,5 +438,220 @@ if (seeMoreBtn) {
             // Scroll vers les projets
             document.getElementById('projets').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+    });
+}
+
+// ===== Fonctionnalités Pages Projet =====
+
+// Gestion des onglets
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+            
+            // Retirer la classe active de tous les boutons et contenus
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Ajouter la classe active au bouton cliqué et au contenu correspondant
+            button.classList.add('active');
+            const targetContent = document.getElementById(targetTab);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        });
+    });
+});
+
+// Gestion de la modal d'images
+function openImageModal(img) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalCaption = document.querySelector('.modal-caption');
+    
+    if (modal && modalImg) {
+        modal.style.display = 'block';
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        if (modalCaption) {
+            modalCaption.textContent = img.alt;
+        }
+        
+        // Empêcher le scroll du body
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    if (modal) {
+        modal.style.display = 'none';
+        // Rétablir le scroll du body
+        document.body.style.overflow = '';
+    }
+}
+
+// Fermer la modal avec la touche Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeImageModal();
+    }
+});
+
+// Fonction pour copier le code
+function copyCode(codeId) {
+    const codeElement = document.getElementById(codeId);
+    if (codeElement) {
+        const text = codeElement.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            // Feedback visuel
+            const copyBtn = event.target;
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            copyBtn.style.background = 'rgba(0, 255, 0, 0.2)';
+            
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = '';
+            }, 2000);
+        }).catch(err => {
+            console.error('Erreur lors de la copie:', err);
+        });
+    }
+}
+
+// ===== Explorateur de fichiers =====
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script chargé, recherche des éléments de l\'explorateur...');
+    
+    const fileItems = document.querySelectorAll('.file-item.file');
+    const fileContent = document.getElementById('fileContent');
+    const currentFileSpan = document.querySelector('.current-file');
+    const copyBtn = document.getElementById('copyCurrentFile');
+    
+    console.log('Éléments trouvés:', {
+        fileItems: fileItems.length,
+        fileContent: !!fileContent,
+        currentFileSpan: !!currentFileSpan,
+        copyBtn: !!copyBtn
+    });
+    
+    if (fileItems.length === 0) {
+        console.log('Aucun fichier trouvé dans l\'explorateur');
+        return;
+    }
+    
+    fileItems.forEach((item, index) => {
+        console.log(`Configuration du fichier ${index}:`, item.getAttribute('data-file'));
+        
+        item.addEventListener('click', () => {
+            console.log('Fichier cliqué:', item.getAttribute('data-file'));
+            
+            // Retirer la classe active de tous les fichiers
+            fileItems.forEach(file => file.classList.remove('active'));
+            
+            // Ajouter la classe active au fichier cliqué
+            item.classList.add('active');
+            
+            // Récupérer les informations du fichier
+            const fileId = item.getAttribute('data-file');
+            const filePath = item.getAttribute('data-path');
+            const fileName = item.querySelector('.file-name').textContent;
+            
+            console.log('Informations du fichier:', { fileId, filePath, fileName });
+            
+            // Mettre à jour l'en-tête
+            if (currentFileSpan) {
+                currentFileSpan.textContent = `$ cat ${filePath}`;
+            }
+            
+            // Récupérer le contenu du fichier
+            const fileSource = document.getElementById(`file-${fileId}`);
+            console.log('Source du fichier trouvée:', !!fileSource);
+            
+            if (fileSource && fileContent) {
+                // Afficher le contenu du fichier
+                fileContent.innerHTML = `
+                    <div class="file-display">
+                        <div class="file-header-display">
+                            <span class="terminal-prompt">lucien@portfolio:~/projects</span>$ cat ${filePath}
+                        </div>
+                        <pre class="code-display">${fileSource.innerHTML}</pre>
+                    </div>
+                `;
+                
+                // Afficher le bouton de copie
+                if (copyBtn) {
+                    copyBtn.style.display = 'block';
+                    copyBtn.onclick = () => copyFileContent(fileSource);
+                }
+            } else {
+                // Fichier non trouvé
+                console.log('Fichier non trouvé:', `file-${fileId}`);
+                if (fileContent) {
+                    fileContent.innerHTML = `
+                        <div class="file-placeholder">
+                            <p>$ cat ${filePath}</p>
+                            <p style="color: #ff4444;">Fichier non trouvé ou contenu non disponible</p>
+                        </div>
+                    `;
+                }
+                if (copyBtn) {
+                    copyBtn.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
+// Fonction pour copier le contenu du fichier affiché
+function copyFileContent(sourceElement) {
+    const text = sourceElement.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const copyBtn = document.getElementById('copyCurrentFile');
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = 'Copied!';
+        copyBtn.style.background = 'rgba(0, 255, 0, 0.2)';
+        
+        setTimeout(() => {
+            copyBtn.textContent = originalText;
+            copyBtn.style.background = '';
+        }, 2000);
+    }).catch(err => {
+        console.error('Erreur lors de la copie:', err);
+    });
+}
+
+// Effet de frappe pour les éléments de code
+function typeCodeEffect() {
+    const codeBlocks = document.querySelectorAll('.code-block code');
+    
+    codeBlocks.forEach(block => {
+        const text = block.textContent;
+        block.textContent = '';
+        let i = 0;
+        
+        function typeChar() {
+            if (i < text.length) {
+                block.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeChar, 10); // Vitesse de frappe
+            }
+        }
+        
+        // Observer pour déclencher l'animation quand l'élément est visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(typeChar, 500); // Délai avant de commencer
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(block);
     });
 }

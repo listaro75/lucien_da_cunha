@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="minishell - Shell UNIX personnalisé - École 42">
+    <title>minishell | Lucien Da Cunha</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Effet Matrix Rain Global -->
+    <div class="matrix-rain-bg"></div>
+    
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <!-- Menu Hamburger Button (à gauche sur mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <div class="logo" id="logo">
+                <span class="logo-prompt">root@minishell:~$</span>
+                <span class="logo-text">LD</span>
+            </div>
+
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-links">
+                    <li><a href="../index.html#accueil" class="nav-link" data-fr="~/home" data-en="~/home"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Accueil" data-en="Home">Accueil</span></a></li>
+                    <li><a href="../index.html#a-propos" class="nav-link" data-fr="about.txt" data-en="about.txt"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="À propos" data-en="About">À propos</span></a></li>
+                    <li><a href="../index.html#diplomes" class="nav-link" data-fr="diplomes/" data-en="diplomas/"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Diplômes" data-en="Diplomas">Diplômes</span></a></li>
+                    <li><a href="../index.html#competences" class="nav-link" data-fr="./skills.sh" data-en="./skills.sh"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Compétences" data-en="Skills">Compétences</span></a></li>
+                    <li><a href="../index.html#projets" class="nav-link" data-fr="git log" data-en="git log"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Projets" data-en="Projects">Projets</span></a></li>
+                    <li><a href="../index.html#contact" class="nav-link" data-fr="mail -s" data-en="mail -s"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Contact" data-en="Contact">Contact</span></a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="social-links">
+                        <a href="https://github.com/Lucien-Da-Cunha" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" data-terminal="github">
+                            <span class="terminal-label">git://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lucien-da-cunha-69b300227/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" data-terminal="linkedin">
+                            <span class="terminal-label">https://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="../assets/cv.pdf" download class="btn-cv" data-fr="wget cv.pdf" data-en="wget cv.pdf">
+                        <span class="btn-prefix">$</span>
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 12L3 7L4.4 5.6L7 8.2V0H9V8.2L11.6 5.6L13 7L8 12Z" fill="currentColor"/>
+                            <path d="M0 14H16V16H0V14Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <div class="language-switcher">
+                        <button class="lang-btn" data-lang="fr">
+                            <span class="lang-prefix">--lang=</span>FR
+                        </button>
+                        <button class="lang-btn active" data-lang="en">
+                            <span class="lang-prefix">--lang=</span>EN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Projet Hero -->
+    <section class="project-hero section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~$ cd projects/minishell/</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="terminal-command">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/minishell</span>$ ls -la
+                    </p>
+                    <div class="project-info">
+                        <h1 class="project-title">minishell</h1>
+                        <p class="project-description">Recréation d'un shell UNIX avec parsing, redirections et pipes</p>
+                        <div class="project-meta">
+                            <span class="project-date">📅 27/06/2025</span>
+                            <span class="project-tech">🛠️ C, Bash, Unix</span>
+                            <span class="project-status">📊 125/125</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Onglets Projet -->
+    <section class="project-tabs section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~/projects/minishell$ ./explore.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <!-- Navigation des onglets -->
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="detail">
+                            <span class="terminal-prompt">$</span> cat README.md
+                        </button>
+                        <button class="tab-btn" data-tab="code">
+                            <span class="terminal-prompt">$</span> find . -name "*.c"
+                        </button>
+                        <button class="tab-btn" data-tab="images">
+                            <span class="terminal-prompt">$</span> find . -name "*.png"
+                        </button>
+                    </div>
+
+                    <!-- Contenu des onglets -->
+                    <div class="tabs-content">
+                        <!-- Onglet Détail -->
+                        <div class="tab-content active" id="detail">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/minishell</span>$ cat README.md
+                                </p>
+                            </div>
+                            <div class="project-detail">
+                                <h3>📋 Description détaillée</h3>
+                                <p>minishell est un projet avancé de l'École 42 qui consiste à recréer un shell UNIX fonctionnel. Le projet comprend la gestion du parsing de commandes, l'exécution de programmes, les redirections, les pipes, les variables d'environnement, et l'implémentation des built-ins principaux.</p>
+                                
+                                <h3>🎯 Objectifs</h3>
+                                <ul>
+                                    <li>Parser et interpréter les commandes shell complexes</li>
+                                    <li>Gérer les pipes, redirections et heredocs</li>
+                                    <li>Implémenter les built-ins (echo, cd, pwd, export, unset, env, exit)</li>
+                                    <li>Gestion des signaux et codes de sortie</li>
+                                    <li>Variables d'environnement et expansion</li>
+                                    <li>Gestion des erreurs et edge cases</li>
+                                </ul>
+                                
+                                <h3>⚙️ Technologies utilisées</h3>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">C</span>
+                                    <span class="tech-tag">Unix/Linux</span>
+                                    <span class="tech-tag">Bash</span>
+                                    <span class="tech-tag">Processes</span>
+                                    <span class="tech-tag">Signals</span>
+                                    <span class="tech-tag">File Descriptors</span>
+                                </div>
+                                
+                                <h3>🔗 Liens</h3>
+                                <div class="project-links">
+                                    <a href="https://github.com/Lucien-Da-Cunha/minishell" target="_blank" class="project-link">
+                                        <span class="terminal-prompt">$</span> git clone https://github.com/Lucien-Da-Cunha/minishell.git
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Code -->
+                        <div class="tab-content" id="code">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/minishell</span>$ tree
+                                </p>
+                            </div>
+                            <div class="project-code">
+                                <h3>📁 Architecture du projet</h3>
+                                <div class="file-explorer">
+                                    <div class="file-tree-container">
+                                        <!-- Headers include -->
+                                        <div class="file-item folder" data-path="include">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">include/</span>
+                                        </div>
+                                        <div class="file-item file" data-file="buit_in_h" data-path="include/buit_in.h">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">├── buit_in.h</span>
+                                        </div>
+                                        <div class="file-item file" data-file="exec_h" data-path="include/exec.h">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">├── exec.h</span>
+                                        </div>
+                                        <div class="file-item file" data-file="exit_h" data-path="include/exit.h">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">├── exit.h</span>
+                                        </div>
+                                        <div class="file-item file" data-file="minishell_h" data-path="include/minishell.h">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">├── minishell.h</span>
+                                        </div>
+                                        <div class="file-item file" data-file="parsing_h" data-path="include/parsing.h">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">├── parsing.h</span>
+                                        </div>
+                                        <div class="file-item file" data-file="types_h" data-path="include/types.h">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">└── types.h</span>
+                                        </div>
+
+                                        <!-- Main files -->
+                                        <div class="file-item file" data-file="makefile" data-path="Makefile">
+                                            <span class="file-icon">⚙️</span>
+                                            <span class="file-name">Makefile</span>
+                                        </div>
+                                        <div class="file-item file" data-file="readline_supp" data-path="readline.supp">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">readline.supp</span>
+                                        </div>
+
+                                        <!-- Source files -->
+                                        <div class="file-item folder" data-path="src">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">src/</span>
+                                        </div>
+                                        
+                                        <!-- Built-in commands -->
+                                        <div class="file-item folder" data-path="src/built-in">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">├── built-in/</span>
+                                        </div>
+                                        <div class="file-item file" data-file="builtin_pipe" data-path="src/built-in/builtin_pipe.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── builtin_pipe.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="cd_utils" data-path="src/built-in/cd_utils.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── cd_utils.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="check_builtin" data-path="src/built-in/check_builtin.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── check_builtin.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="do_builtin" data-path="src/built-in/do_builtin.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── do_builtin.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="execute_builtin" data-path="src/built-in/execute_builtin.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── execute_builtin.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="export_utils" data-path="src/built-in/export_utils.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── export_utils.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_cd" data-path="src/built-in/ft_cd.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── ft_cd.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_echo" data-path="src/built-in/ft_echo.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── ft_echo.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_env" data-path="src/built-in/ft_env.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── ft_env.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_exit" data-path="src/built-in/ft_exit.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── ft_exit.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_export" data-path="src/built-in/ft_export.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── ft_export.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_pwd" data-path="src/built-in/ft_pwd.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── ft_pwd.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_unset" data-path="src/built-in/ft_unset.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   └── ft_unset.c</span>
+                                        </div>
+
+                                        <!-- Execution -->
+                                        <div class="file-item folder" data-path="src/exec">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">├── exec/</span>
+                                        </div>
+                                        <div class="file-item file" data-file="exec_binary" data-path="src/exec/exec_binary.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── exec_binary.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="exec_cmd" data-path="src/exec/exec_cmd.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── exec_cmd.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="exec_pipe" data-path="src/exec/exec_pipe.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── exec_pipe.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="exec_simple_cmd" data-path="src/exec/exec_simple_cmd.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── exec_simple_cmd.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="handle_heredoc" data-path="src/exec/handle_heredoc.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── handle_heredoc.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="handle_redir" data-path="src/exec/handle_redir.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── handle_redir.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="utils_redir" data-path="src/exec/utils_redir.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   └── utils_redir.c</span>
+                                        </div>
+
+                                        <!-- Exit et signaux -->
+                                        <div class="file-item folder" data-path="src/exit">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">├── exit/</span>
+                                        </div>
+                                        <div class="file-item file" data-file="exit_code_1" data-path="src/exit/exit_code_1.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── exit_code_1.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="exit_code_2" data-path="src/exit/exit_code_2.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── exit_code_2.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="signal_1" data-path="src/exit/signal_1.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── signal_1.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="signal_2" data-path="src/exit/signal_2.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   └── signal_2.c</span>
+                                        </div>
+
+                                        <!-- Main minishell -->
+                                        <div class="file-item file" data-file="minishell_1" data-path="src/minishell_1.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">├── minishell_1.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="minishell_2" data-path="src/minishell_2.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">├── minishell_2.c</span>
+                                        </div>
+
+                                        <!-- Parsing -->
+                                        <div class="file-item folder" data-path="src/parsing">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">└── parsing/</span>
+                                        </div>
+                                        <div class="file-item file" data-file="binary" data-path="src/parsing/binary.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── binary.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="build_cmd_node" data-path="src/parsing/build_cmd_node.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── build_cmd_node.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="change_dollar_1" data-path="src/parsing/change_dollar_1.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── change_dollar_1.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="change_dollar_2" data-path="src/parsing/change_dollar_2.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── change_dollar_2.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="check_token_1" data-path="src/parsing/check_token_1.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── check_token_1.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="check_token_2" data-path="src/parsing/check_token_2.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── check_token_2.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="expand_1" data-path="src/parsing/expand_1.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── expand_1.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="expand_2" data-path="src/parsing/expand_2.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── expand_2.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="expand_helpers" data-path="src/parsing/expand_helpers.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── expand_helpers.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="expand_var" data-path="src/parsing/expand_var.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── expand_var.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="expand_word_cmd" data-path="src/parsing/expand_word_cmd.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── expand_word_cmd.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="extract_redirs" data-path="src/parsing/extract_redirs.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── extract_redirs.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="get_path_1" data-path="src/parsing/get_path_1.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── get_path_1.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="get_path_2" data-path="src/parsing/get_path_2.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── get_path_2.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="handle_parenthesis_block" data-path="src/parsing/handle_parenthesis_block.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── handle_parenthesis_block.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="tokenisation_1" data-path="src/parsing/tokenisation_1.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── tokenisation_1.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="tokenisation_2" data-path="src/parsing/tokenisation_2.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── tokenisation_2.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="tokenisation_3" data-path="src/parsing/tokenisation_3.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── tokenisation_3.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="tokenisation_4" data-path="src/parsing/tokenisation_4.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── tokenisation_4.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="tokenisation_5" data-path="src/parsing/tokenisation_5.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── tokenisation_5.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="tokenisation_6" data-path="src/parsing/tokenisation_6.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── tokenisation_6.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="tokenisation_7" data-path="src/parsing/tokenisation_7.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── tokenisation_7.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="tokenisation_8" data-path="src/parsing/tokenisation_8.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── tokenisation_8.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="tokenisation_9" data-path="src/parsing/tokenisation_9.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── tokenisation_9.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="utils_ast" data-path="src/parsing/utils_ast.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── utils_ast.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="utils_tokenisation_1" data-path="src/parsing/utils_tokenisation_1.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── utils_tokenisation_1.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="utils_tokenisation_2" data-path="src/parsing/utils_tokenisation_2.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    ├── utils_tokenisation_2.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="wildcard" data-path="src/parsing/wildcard.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">    └── wildcard.c</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="file-content-container">
+                                        <div class="file-content-header">
+                                            <span class="current-file">Sélectionnez un fichier à gauche</span>
+                                            <button class="copy-btn" id="copyCurrentFile" style="display: none;">Copy</button>
+                                        </div>
+                                        <div class="file-content" id="fileContent">
+                                            <div class="file-placeholder">
+                                                <p>$ cat &lt;filename&gt;</p>
+                                                <p>Cliquez sur un fichier dans l'arborescence pour voir son contenu</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Contenus des fichiers (cachés par défaut) -->
+                                <div class="hidden-file-contents">
+                                    <!-- Headers -->
+                                    <div id="file-buit_in_h" class="file-source">
+                                        <pre><code>// Ajouter ton code buit_in.h ici</code></pre>
+                                    </div>
+                                    <div id="file-exec_h" class="file-source">
+                                        <pre><code>// Ajouter ton code exec.h ici</code></pre>
+                                    </div>
+                                    <div id="file-exit_h" class="file-source">
+                                        <pre><code>// Ajouter ton code exit.h ici</code></pre>
+                                    </div>
+                                    <div id="file-minishell_h" class="file-source">
+                                        <pre><code>// Ajouter ton code minishell.h ici</code></pre>
+                                    </div>
+                                    <div id="file-parsing_h" class="file-source">
+                                        <pre><code>// Ajouter ton code parsing.h ici</code></pre>
+                                    </div>
+                                    <div id="file-types_h" class="file-source">
+                                        <pre><code>// Ajouter ton code types.h ici</code></pre>
+                                    </div>
+
+                                    <!-- Main files -->
+                                    <div id="file-makefile" class="file-source">
+                                        <pre><code># Ajouter ton Makefile ici</code></pre>
+                                    </div>
+                                    <div id="file-readline_supp" class="file-source">
+                                        <pre><code># Ajouter ton readline.supp ici</code></pre>
+                                    </div>
+
+                                    <!-- Built-ins -->
+                                    <div id="file-builtin_pipe" class="file-source">
+                                        <pre><code>// Ajouter ton code builtin_pipe.c ici</code></pre>
+                                    </div>
+                                    <div id="file-cd_utils" class="file-source">
+                                        <pre><code>// Ajouter ton code cd_utils.c ici</code></pre>
+                                    </div>
+                                    <div id="file-check_builtin" class="file-source">
+                                        <pre><code>// Ajouter ton code check_builtin.c ici</code></pre>
+                                    </div>
+                                    <div id="file-do_builtin" class="file-source">
+                                        <pre><code>// Ajouter ton code do_builtin.c ici</code></pre>
+                                    </div>
+                                    <div id="file-execute_builtin" class="file-source">
+                                        <pre><code>// Ajouter ton code execute_builtin.c ici</code></pre>
+                                    </div>
+                                    <div id="file-export_utils" class="file-source">
+                                        <pre><code>// Ajouter ton code export_utils.c ici</code></pre>
+                                    </div>
+                                    <div id="file-ft_cd" class="file-source">
+                                        <pre><code>// Ajouter ton code ft_cd.c ici</code></pre>
+                                    </div>
+                                    <div id="file-ft_echo" class="file-source">
+                                        <pre><code>// Ajouter ton code ft_echo.c ici</code></pre>
+                                    </div>
+                                    <div id="file-ft_env" class="file-source">
+                                        <pre><code>// Ajouter ton code ft_env.c ici</code></pre>
+                                    </div>
+                                    <div id="file-ft_exit" class="file-source">
+                                        <pre><code>// Ajouter ton code ft_exit.c ici</code></pre>
+                                    </div>
+                                    <div id="file-ft_export" class="file-source">
+                                        <pre><code>// Ajouter ton code ft_export.c ici</code></pre>
+                                    </div>
+                                    <div id="file-ft_pwd" class="file-source">
+                                        <pre><code>// Ajouter ton code ft_pwd.c ici</code></pre>
+                                    </div>
+                                    <div id="file-ft_unset" class="file-source">
+                                        <pre><code>// Ajouter ton code ft_unset.c ici</code></pre>
+                                    </div>
+
+                                    <!-- Execution -->
+                                    <div id="file-exec_binary" class="file-source">
+                                        <pre><code>// Ajouter ton code exec_binary.c ici</code></pre>
+                                    </div>
+                                    <div id="file-exec_cmd" class="file-source">
+                                        <pre><code>// Ajouter ton code exec_cmd.c ici</code></pre>
+                                    </div>
+                                    <div id="file-exec_pipe" class="file-source">
+                                        <pre><code>// Ajouter ton code exec_pipe.c ici</code></pre>
+                                    </div>
+                                    <div id="file-exec_simple_cmd" class="file-source">
+                                        <pre><code>// Ajouter ton code exec_simple_cmd.c ici</code></pre>
+                                    </div>
+                                    <div id="file-handle_heredoc" class="file-source">
+                                        <pre><code>// Ajouter ton code handle_heredoc.c ici</code></pre>
+                                    </div>
+                                    <div id="file-handle_redir" class="file-source">
+                                        <pre><code>// Ajouter ton code handle_redir.c ici</code></pre>
+                                    </div>
+                                    <div id="file-utils_redir" class="file-source">
+                                        <pre><code>// Ajouter ton code utils_redir.c ici</code></pre>
+                                    </div>
+
+                                    <!-- Exit et signaux -->
+                                    <div id="file-exit_code_1" class="file-source">
+                                        <pre><code>// Ajouter ton code exit_code_1.c ici</code></pre>
+                                    </div>
+                                    <div id="file-exit_code_2" class="file-source">
+                                        <pre><code>// Ajouter ton code exit_code_2.c ici</code></pre>
+                                    </div>
+                                    <div id="file-signal_1" class="file-source">
+                                        <pre><code>// Ajouter ton code signal_1.c ici</code></pre>
+                                    </div>
+                                    <div id="file-signal_2" class="file-source">
+                                        <pre><code>// Ajouter ton code signal_2.c ici</code></pre>
+                                    </div>
+
+                                    <!-- Main minishell -->
+                                    <div id="file-minishell_1" class="file-source">
+                                        <pre><code>// Ajouter ton code minishell_1.c ici</code></pre>
+                                    </div>
+                                    <div id="file-minishell_2" class="file-source">
+                                        <pre><code>// Ajouter ton code minishell_2.c ici</code></pre>
+                                    </div>
+
+                                    <!-- Parsing -->
+                                    <div id="file-binary" class="file-source">
+                                        <pre><code>// Ajouter ton code binary.c ici</code></pre>
+                                    </div>
+                                    <div id="file-build_cmd_node" class="file-source">
+                                        <pre><code>// Ajouter ton code build_cmd_node.c ici</code></pre>
+                                    </div>
+                                    <div id="file-change_dollar_1" class="file-source">
+                                        <pre><code>// Ajouter ton code change_dollar_1.c ici</code></pre>
+                                    </div>
+                                    <div id="file-change_dollar_2" class="file-source">
+                                        <pre><code>// Ajouter ton code change_dollar_2.c ici</code></pre>
+                                    </div>
+                                    <div id="file-check_token_1" class="file-source">
+                                        <pre><code>// Ajouter ton code check_token_1.c ici</code></pre>
+                                    </div>
+                                    <div id="file-check_token_2" class="file-source">
+                                        <pre><code>// Ajouter ton code check_token_2.c ici</code></pre>
+                                    </div>
+                                    <div id="file-expand_1" class="file-source">
+                                        <pre><code>// Ajouter ton code expand_1.c ici</code></pre>
+                                    </div>
+                                    <div id="file-expand_2" class="file-source">
+                                        <pre><code>// Ajouter ton code expand_2.c ici</code></pre>
+                                    </div>
+                                    <div id="file-expand_helpers" class="file-source">
+                                        <pre><code>// Ajouter ton code expand_helpers.c ici</code></pre>
+                                    </div>
+                                    <div id="file-expand_var" class="file-source">
+                                        <pre><code>// Ajouter ton code expand_var.c ici</code></pre>
+                                    </div>
+                                    <div id="file-expand_word_cmd" class="file-source">
+                                        <pre><code>// Ajouter ton code expand_word_cmd.c ici</code></pre>
+                                    </div>
+                                    <div id="file-extract_redirs" class="file-source">
+                                        <pre><code>// Ajouter ton code extract_redirs.c ici</code></pre>
+                                    </div>
+                                    <div id="file-get_path_1" class="file-source">
+                                        <pre><code>// Ajouter ton code get_path_1.c ici</code></pre>
+                                    </div>
+                                    <div id="file-get_path_2" class="file-source">
+                                        <pre><code>// Ajouter ton code get_path_2.c ici</code></pre>
+                                    </div>
+                                    <div id="file-handle_parenthesis_block" class="file-source">
+                                        <pre><code>// Ajouter ton code handle_parenthesis_block.c ici</code></pre>
+                                    </div>
+                                    <div id="file-tokenisation_1" class="file-source">
+                                        <pre><code>// Ajouter ton code tokenisation_1.c ici</code></pre>
+                                    </div>
+                                    <div id="file-tokenisation_2" class="file-source">
+                                        <pre><code>// Ajouter ton code tokenisation_2.c ici</code></pre>
+                                    </div>
+                                    <div id="file-tokenisation_3" class="file-source">
+                                        <pre><code>// Ajouter ton code tokenisation_3.c ici</code></pre>
+                                    </div>
+                                    <div id="file-tokenisation_4" class="file-source">
+                                        <pre><code>// Ajouter ton code tokenisation_4.c ici</code></pre>
+                                    </div>
+                                    <div id="file-tokenisation_5" class="file-source">
+                                        <pre><code>// Ajouter ton code tokenisation_5.c ici</code></pre>
+                                    </div>
+                                    <div id="file-tokenisation_6" class="file-source">
+                                        <pre><code>// Ajouter ton code tokenisation_6.c ici</code></pre>
+                                    </div>
+                                    <div id="file-tokenisation_7" class="file-source">
+                                        <pre><code>// Ajouter ton code tokenisation_7.c ici</code></pre>
+                                    </div>
+                                    <div id="file-tokenisation_8" class="file-source">
+                                        <pre><code>// Ajouter ton code tokenisation_8.c ici</code></pre>
+                                    </div>
+                                    <div id="file-tokenisation_9" class="file-source">
+                                        <pre><code>// Ajouter ton code tokenisation_9.c ici</code></pre>
+                                    </div>
+                                    <div id="file-utils_ast" class="file-source">
+                                        <pre><code>// Ajouter ton code utils_ast.c ici</code></pre>
+                                    </div>
+                                    <div id="file-utils_tokenisation_1" class="file-source">
+                                        <pre><code>// Ajouter ton code utils_tokenisation_1.c ici</code></pre>
+                                    </div>
+                                    <div id="file-utils_tokenisation_2" class="file-source">
+                                        <pre><code>// Ajouter ton code utils_tokenisation_2.c ici</code></pre>
+                                    </div>
+                                    <div id="file-wildcard" class="file-source">
+                                        <pre><code>// Ajouter ton code wildcard.c ici</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Images -->
+                        <div class="tab-content" id="images">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/minishell</span>$ find . -name "*.png" -o -name "*.jpg"
+                                </p>
+                            </div>
+                            <div class="project-images">
+                                <div class="images-grid">
+                                    <div class="image-item">
+                                        <img src="../assets/projects/minishell-demo.png" alt="minishell - Démonstration" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>demo_minishell.png
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/minishell-tests.png" alt="minishell - Tests" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>tests_results.png
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/minishell-architecture.png" alt="minishell - Architecture" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>architecture.png
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="terminal-cursor">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/minishell</span>$ <span class="cursor-blink">_</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour les images -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>$ echo "&copy; 2025 Lucien Da Cunha. Tous droits réservés." | cat</p>
+    </footer>
+
+    <!-- Bouton Mode Confort -->
+    <button id="colorModeBtn" class="color-mode-btn" title="Mode confort">
+        <span class="mode-icon">●</span>
+        <span class="mode-label">Soft</span>
+    </button>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

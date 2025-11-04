@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PROJECT_NAME - Lucien Da Cunha Project">
+    <title>PROJECT_NAME | Lucien Da Cunha</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Effet Matrix Rain Global -->
+    <div class="matrix-rain-bg"></div>
+    
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <!-- Menu Hamburger Button (à gauche sur mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <div class="logo" id="logo">
+                <span class="logo-prompt">root@PROJECT_NAME:~$</span>
+                <span class="logo-text">LD</span>
+            </div>
+
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-links">
+                    <li><a href="../index.html#accueil" class="nav-link" data-fr="~/home" data-en="~/home"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Accueil" data-en="Home">Accueil</span></a></li>
+                    <li><a href="../index.html#a-propos" class="nav-link" data-fr="about.txt" data-en="about.txt"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="À propos" data-en="About">À propos</span></a></li>
+                    <li><a href="../index.html#diplomes" class="nav-link" data-fr="diplomes/" data-en="diplomas/"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Diplômes" data-en="Diplomas">Diplômes</span></a></li>
+                    <li><a href="../index.html#competences" class="nav-link" data-fr="./skills.sh" data-en="./skills.sh"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Compétences" data-en="Skills">Compétences</span></a></li>
+                    <li><a href="../index.html#projets" class="nav-link" data-fr="git log" data-en="git log"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Projets" data-en="Projects">Projets</span></a></li>
+                    <li><a href="../index.html#contact" class="nav-link" data-fr="mail -s" data-en="mail -s"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Contact" data-en="Contact">Contact</span></a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="social-links">
+                        <a href="https://github.com/Lucien-Da-Cunha" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" data-terminal="github">
+                            <span class="terminal-label">git://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lucien-da-cunha-69b300227/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" data-terminal="linkedin">
+                            <span class="terminal-label">https://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="../assets/cv.pdf" download class="btn-cv" data-fr="wget cv.pdf" data-en="wget cv.pdf">
+                        <span class="btn-prefix">$</span>
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 12L3 7L4.4 5.6L7 8.2V0H9V8.2L11.6 5.6L13 7L8 12Z" fill="currentColor"/>
+                            <path d="M0 14H16V16H0V14Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <div class="language-switcher">
+                        <button class="lang-btn" data-lang="fr">
+                            <span class="lang-prefix">--lang=</span>FR
+                        </button>
+                        <button class="lang-btn active" data-lang="en">
+                            <span class="lang-prefix">--lang=</span>EN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Projet Hero -->
+    <section class="project-hero section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~$ cd projects/PROJECT_NAME/</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="terminal-command">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/PROJECT_NAME</span>$ ls -la
+                    </p>
+                    <div class="project-info">
+                        <h1 class="project-title">PROJECT_NAME</h1>
+                        <p class="project-description">PROJECT_DESCRIPTION</p>
+                        <div class="project-meta">
+                            <span class="project-date">📅 PROJECT_DATE</span>
+                            <span class="project-tech">🛠️ PROJECT_TECH</span>
+                            <span class="project-status">📊 PROJECT_STATUS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Onglets Projet -->
+    <section class="project-tabs section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~/projects/PROJECT_NAME$ ./explore.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <!-- Navigation des onglets -->
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="detail">
+                            <span class="terminal-prompt">$</span> cat README.md
+                        </button>
+                        <button class="tab-btn" data-tab="code">
+                            <span class="terminal-prompt">$</span> ls src/
+                        </button>
+                        <button class="tab-btn" data-tab="images">
+                            <span class="terminal-prompt">$</span> find . -name "*.jpg"
+                        </button>
+                    </div>
+
+                    <!-- Contenu des onglets -->
+                    <div class="tabs-content">
+                        <!-- Onglet Détail -->
+                        <div class="tab-content active" id="detail">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/PROJECT_NAME</span>$ cat README.md
+                                </p>
+                            </div>
+                            <div class="project-detail">
+                                <h3>📋 Description détaillée</h3>
+                                <p>PROJECT_DETAILED_DESCRIPTION</p>
+                                
+                                <h3>🎯 Objectifs</h3>
+                                <ul>
+                                    <li>PROJECT_OBJECTIVE_1</li>
+                                    <li>PROJECT_OBJECTIVE_2</li>
+                                    <li>PROJECT_OBJECTIVE_3</li>
+                                </ul>
+                                
+                                <h3>⚙️ Technologies utilisées</h3>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">TECH_1</span>
+                                    <span class="tech-tag">TECH_2</span>
+                                    <span class="tech-tag">TECH_3</span>
+                                </div>
+                                
+                                <h3>🔗 Liens</h3>
+                                <div class="project-links">
+                                    <a href="PROJECT_GITHUB_URL" target="_blank" class="project-link">
+                                        <span class="terminal-prompt">$</span> git clone PROJECT_GITHUB_URL
+                                    </a>
+                                    <a href="PROJECT_DEMO_URL" target="_blank" class="project-link">
+                                        <span class="terminal-prompt">$</span> open demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Code -->
+                        <div class="tab-content" id="code">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/PROJECT_NAME</span>$ ls -la src/
+                                </p>
+                            </div>
+                            <div class="project-code">
+                                <h3>📁 Structure du projet</h3>
+                                <div class="file-explorer">
+                                    <div class="file-tree-container">
+                                        <div class="file-item folder" data-path="src">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">src/</span>
+                                        </div>
+                                        <div class="file-item file" data-file="main" data-path="src/main.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">main.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="utils" data-path="src/utils.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">utils.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="header" data-path="src/headers/project.h">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">headers/project.h</span>
+                                        </div>
+                                        <div class="file-item file" data-file="makefile" data-path="Makefile">
+                                            <span class="file-icon">⚙️</span>
+                                            <span class="file-name">Makefile</span>
+                                        </div>
+                                        <div class="file-item file" data-file="readme" data-path="README.md">
+                                            <span class="file-icon">�</span>
+                                            <span class="file-name">README.md</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="file-content-container">
+                                        <div class="file-content-header">
+                                            <span class="current-file">Sélectionnez un fichier à gauche</span>
+                                            <button class="copy-btn" id="copyCurrentFile" style="display: none;">Copy</button>
+                                        </div>
+                                        <div class="file-content" id="fileContent">
+                                            <div class="file-placeholder">
+                                                <p>$ cat &lt;filename&gt;</p>
+                                                <p>Cliquez sur un fichier dans l'arborescence pour voir son contenu</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Contenus des fichiers (cachés par défaut) -->
+                                <div class="hidden-file-contents">
+                                    <div id="file-main" class="file-source">
+                                        <pre><code>PROJECT_MAIN_CODE</code></pre>
+                                    </div>
+                                    <div id="file-utils" class="file-source">
+                                        <pre><code>PROJECT_UTILS_CODE</code></pre>
+                                    </div>
+                                    <div id="file-header" class="file-source">
+                                        <pre><code>PROJECT_HEADER_CODE</code></pre>
+                                    </div>
+                                    <div id="file-makefile" class="file-source">
+                                        <pre><code>PROJECT_MAKEFILE</code></pre>
+                                    </div>
+                                    <div id="file-readme" class="file-source">
+                                        <pre><code>PROJECT_README_CONTENT</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Images -->
+                        <div class="tab-content" id="images">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/PROJECT_NAME</span>$ find . -name "*.jpg" -o -name "*.png"
+                                </p>
+                            </div>
+                            <div class="project-images">
+                                <div class="images-grid">
+                                    <div class="image-item">
+                                        <img src="PROJECT_IMAGE_1" alt="PROJECT_NAME - Image 1" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>screenshot_1.png
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="PROJECT_IMAGE_2" alt="PROJECT_NAME - Image 2" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>demo_2.jpg
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="PROJECT_IMAGE_3" alt="PROJECT_NAME - Image 3" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>result_3.png
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="terminal-cursor">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/PROJECT_NAME</span>$ <span class="cursor-blink">_</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour les images -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>$ echo "&copy; 2025 Lucien Da Cunha. Tous droits réservés." | cat</p>
+    </footer>
+
+    <!-- Bouton Mode Confort -->
+    <button id="colorModeBtn" class="color-mode-btn" title="Mode confort">
+        <span class="mode-icon">●</span>
+        <span class="mode-label">Soft</span>
+    </button>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

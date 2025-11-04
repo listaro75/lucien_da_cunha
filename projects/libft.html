@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="libft - Bibliothèque C personnalisée - École 42">
+    <title>libft | Lucien Da Cunha</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Effet Matrix Rain Global -->
+    <div class="matrix-rain-bg"></div>
+    
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <!-- Menu Hamburger Button (à gauche sur mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <div class="logo" id="logo">
+                <span class="logo-prompt">root@libft:~$</span>
+                <span class="logo-text">LD</span>
+            </div>
+
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-links">
+                    <li><a href="../index.html#accueil" class="nav-link" data-fr="~/home" data-en="~/home"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Accueil" data-en="Home">Accueil</span></a></li>
+                    <li><a href="../index.html#a-propos" class="nav-link" data-fr="about.txt" data-en="about.txt"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="À propos" data-en="About">À propos</span></a></li>
+                    <li><a href="../index.html#diplomes" class="nav-link" data-fr="diplomes/" data-en="diplomas/"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Diplômes" data-en="Diplomas">Diplômes</span></a></li>
+                    <li><a href="../index.html#competences" class="nav-link" data-fr="./skills.sh" data-en="./skills.sh"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Compétences" data-en="Skills">Compétences</span></a></li>
+                    <li><a href="../index.html#projets" class="nav-link" data-fr="git log" data-en="git log"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Projets" data-en="Projects">Projets</span></a></li>
+                    <li><a href="../index.html#contact" class="nav-link" data-fr="mail -s" data-en="mail -s"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Contact" data-en="Contact">Contact</span></a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="social-links">
+                        <a href="https://github.com/Lucien-Da-Cunha" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" data-terminal="github">
+                            <span class="terminal-label">git://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lucien-da-cunha-69b300227/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" data-terminal="linkedin">
+                            <span class="terminal-label">https://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="../assets/cv.pdf" download class="btn-cv" data-fr="wget cv.pdf" data-en="wget cv.pdf">
+                        <span class="btn-prefix">$</span>
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 12L3 7L4.4 5.6L7 8.2V0H9V8.2L11.6 5.6L13 7L8 12Z" fill="currentColor"/>
+                            <path d="M0 14H16V16H0V14Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <div class="language-switcher">
+                        <button class="lang-btn" data-lang="fr">
+                            <span class="lang-prefix">--lang=</span>FR
+                        </button>
+                        <button class="lang-btn active" data-lang="en">
+                            <span class="lang-prefix">--lang=</span>EN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Projet Hero -->
+    <section class="project-hero section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~$ cd projects/libft/</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="terminal-command">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/libft</span>$ ls -la
+                    </p>
+                    <div class="project-info">
+                        <h1 class="project-title">libft</h1>
+                        <p class="project-description">Ma première bibliothèque C personnalisée - Recréation des fonctions de la libc</p>
+                        <div class="project-meta">
+                            <span class="project-date">📅 Septembre 2024</span>
+                            <span class="project-tech">🛠️ C, Makefile</span>
+                            <span class="project-status">📊 Terminé - 115/100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Onglets Projet -->
+    <section class="project-tabs section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~/projects/libft$ ./explore.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <!-- Navigation des onglets -->
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="detail">
+                            <span class="terminal-prompt">$</span> cat README.md
+                        </button>
+                        <button class="tab-btn" data-tab="code">
+                            <span class="terminal-prompt">$</span> ls src/
+                        </button>
+                        <button class="tab-btn" data-tab="images">
+                            <span class="terminal-prompt">$</span> find . -name "*.png"
+                        </button>
+                    </div>
+
+                    <!-- Contenu des onglets -->
+                    <div class="tabs-content">
+                        <!-- Onglet Détail -->
+                        <div class="tab-content active" id="detail">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/libft</span>$ cat README.md
+                                </p>
+                            </div>
+                            <div class="project-detail">
+                                <h3>📋 Description détaillée</h3>
+                                <p>libft est mon premier projet à l'École 42. L'objectif était de recréer de zéro plusieurs fonctions de la bibliothèque standard C (libc), en comprenant leur fonctionnement interne et en respectant les contraintes strictes de l'école (norminette, pas de fuites mémoire, gestion d'erreurs).</p>
+                                
+                                <h3>🎯 Objectifs</h3>
+                                <ul>
+                                    <li>Recréer 43 fonctions de la libc (strlen, strcpy, malloc, etc.)</li>
+                                    <li>Comprendre la gestion mémoire en C</li>
+                                    <li>Apprendre les listes chaînées</li>
+                                    <li>Maîtriser les pointeurs et l'allocation dynamique</li>
+                                    <li>Respecter la norme de code de 42</li>
+                                </ul>
+                                
+                                <h3>⚙️ Technologies utilisées</h3>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">C</span>
+                                    <span class="tech-tag">Makefile</span>
+                                    <span class="tech-tag">Unix</span>
+                                    <span class="tech-tag">Git</span>
+                                </div>
+                                
+                                <h3>🔗 Liens</h3>
+                                <div class="project-links">
+                                    <a href="https://github.com/Lucien-Da-Cunha/libft" target="_blank" class="project-link">
+                                        <span class="terminal-prompt">$</span> git clone https://github.com/Lucien-Da-Cunha/libft.git
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Code -->
+                        <div class="tab-content" id="code">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/libft</span>$ ls -la
+                                </p>
+                            </div>
+                            <div class="project-code">
+                                <h3>📁 Structure du projet</h3>
+                                <div class="file-explorer">
+                                    <div class="file-tree-container">
+                                        <div class="file-item folder" data-path="libft">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">libft/</span>
+                                        </div>
+                                        
+                                        <!-- Fonctions de base -->
+                                        <div class="file-item file" data-file="ft_atoi" data-path="ft_atoi.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_atoi.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_bzero" data-path="ft_bzero.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_bzero.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_calloc" data-path="ft_calloc.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_calloc.c</span>
+                                        </div>
+                                        
+                                        <!-- Fonctions is* -->
+                                        <div class="file-item file" data-file="ft_isalnum" data-path="ft_isalnum.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_isalnum.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_isalpha" data-path="ft_isalpha.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_isalpha.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_isascii" data-path="ft_isascii.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_isascii.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_isdigit" data-path="ft_isdigit.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_isdigit.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_isprint" data-path="ft_isprint.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_isprint.c</span>
+                                        </div>
+                                        
+                                        <!-- Conversion -->
+                                        <div class="file-item file" data-file="ft_itoa" data-path="ft_itoa.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_itoa.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_tolower" data-path="ft_tolower.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_tolower.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_toupper" data-path="ft_toupper.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_toupper.c</span>
+                                        </div>
+                                        
+                                        <!-- Listes chaînées -->
+                                        <div class="file-item file" data-file="ft_lstadd_back" data-path="ft_lstadd_back.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_lstadd_back.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_lstadd_front" data-path="ft_lstadd_front.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_lstadd_front.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_lstlast" data-path="ft_lstlast.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_lstlast.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_lstnew" data-path="ft_lstnew.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_lstnew.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_lstsize" data-path="ft_lstsize.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_lstsize.c</span>
+                                        </div>
+                                        
+                                        <!-- Gestion mémoire -->
+                                        <div class="file-item file" data-file="ft_memchr" data-path="ft_memchr.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_memchr.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_memcmp" data-path="ft_memcmp.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_memcmp.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_memcpy" data-path="ft_memcpy.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_memcpy.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_memmove" data-path="ft_memmove.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_memmove.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_memset" data-path="ft_memset.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_memset.c</span>
+                                        </div>
+                                        
+                                        <!-- Sortie fichier */
+                                        <div class="file-item file" data-file="ft_putchar_fd" data-path="ft_putchar_fd.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_putchar_fd.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_putendl_fd" data-path="ft_putendl_fd.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_putendl_fd.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_putnbr_fd" data-path="ft_putnbr_fd.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_putnbr_fd.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_putstr_fd" data-path="ft_putstr_fd.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_putstr_fd.c</span>
+                                        </div>
+                                        
+                                        <!-- Manipulation de chaînes */
+                                        <div class="file-item file" data-file="ft_split" data-path="ft_split.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_split.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strchr" data-path="ft_strchr.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strchr.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strdup" data-path="ft_strdup.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strdup.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_striteri" data-path="ft_striteri.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_striteri.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strjoin" data-path="ft_strjoin.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strjoin.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strlcat" data-path="ft_strlcat.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strlcat.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strlcpy" data-path="ft_strlcpy.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strlcpy.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strlen" data-path="ft_strlen.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strlen.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strmapi" data-path="ft_strmapi.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strmapi.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strncmp" data-path="ft_strncmp.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strncmp.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strnstr" data-path="ft_strnstr.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strnstr.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strrchr" data-path="ft_strrchr.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strrchr.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_strtrim" data-path="ft_strtrim.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_strtrim.c</span>
+                                        </div>
+                                        <div class="file-item file" data-file="ft_substr" data-path="ft_substr.c">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">ft_substr.c</span>
+                                        </div>
+                                        
+                                        <!-- Fichiers de configuration -->
+                                        <div class="file-item file" data-file="libft_h" data-path="libft.h">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">libft.h</span>
+                                        </div>
+                                        <div class="file-item file" data-file="makefile" data-path="Makefile">
+                                            <span class="file-icon">⚙️</span>
+                                            <span class="file-name">Makefile</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="file-content-container">
+                                        <div class="file-content-header">
+                                            <span class="current-file">Sélectionnez un fichier à gauche</span>
+                                            <button class="copy-btn" id="copyCurrentFile" style="display: none;">Copy</button>
+                                        </div>
+                                        <div class="file-content" id="fileContent">
+                                            <div class="file-placeholder">
+                                                <p>$ cat &lt;filename&gt;</p>
+                                                <p>Cliquez sur un fichier dans l'arborescence pour voir son contenu</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Contenus des fichiers (cachés par défaut) -->
+                                <div class="hidden-file-contents">
+                                    <!-- Tu peux ajouter tes codes ici, par exemple: -->
+                                    
+                                    <div id="file-ft_atoi" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_atoi(const char *nptr)
+{
+	int	i;
+	int	sign;
+	int	result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+	{
+		i++;
+	}
+	if (nptr[i] == '-')
+	{
+		sign *= -1;
+		i++;
+	}
+	else if (nptr[i] == '+')
+		i++;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		result *= 10;
+		result += nptr[i] - '0';
+		i++;
+	}
+	return (result * sign);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_bzero" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*(unsigned char *)(s + i) = 0;
+		i++;
+	}
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_calloc" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	size_t	bytes;
+	void	*new;
+
+	bytes = size * count;
+	if (size != 0 && ((bytes / size) != count))
+		return (NULL);
+	new = (void *)malloc(count * size);
+	if (!new)
+		return (NULL);
+	ft_bzero(new, size * count);
+	return (new);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_isalnum" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
+		return (1);
+	return (0);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_isalpha" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_isalpha(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	else if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_isascii" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_isascii(int c)
+{
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_isdigit" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_isdigit( int c )
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_isprint" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_itoa" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+size_t	ft_count(long n)
+{
+	size_t	size;
+
+	size = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		n = -n;
+		size = 1;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
+		size++;
+	}
+	return (size);
+}
+
+void	ft_toa(int size, long nb, char *ptr)
+{
+	while (nb > 0)
+	{
+		ptr[size] = (nb % 10) + '0';
+		nb = nb / 10;
+		size--;
+	}
+}
+
+char	*ft_itoa(int n)
+{
+	int		size;
+	long	nb;
+	char	*ptr;
+
+	nb = (long)n;
+	size = ft_count(nb);
+	ptr = (char *)malloc((size + 1) * sizeof(char));
+	if (!ptr)
+		return (NULL);
+	ptr[size] = '\0';
+	if (nb == 0)
+	{
+		ptr[0] = '0';
+	}
+	if (nb < 0)
+	{
+		ptr[0] = '-';
+		nb = -nb;
+	}
+	size--;
+	ft_toa(size, nb, ptr);
+	return (ptr);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_tolower" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_tolower( int c )
+{
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_toupper" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_toupper( int c )
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_lstadd_back" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*skip;
+
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	skip = *lst;
+	while (skip && skip->next)
+	{
+		skip = skip->next;
+	}
+	skip->next = new;
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_lstadd_front" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	if (!new)
+		return ;
+	if (!lst)
+	{
+		*lst = new;
+		return ;
+	}
+	new->next = *lst;
+	*lst = new;
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_lstlast" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	while (lst)
+	{
+		if (lst->next == NULL)
+			return (lst);
+		lst = lst->next;
+	}
+	return (lst);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_lstnew" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*element;
+
+	element = malloc(sizeof(t_list));
+	if (!element)
+		return (NULL);
+	element->content = content;
+	element->next = NULL;
+	return (element);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_lstsize" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}/code></pre>
+                                    </div>
+                                    <div id="file-ft_memchr" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (NULL);
+	while (i < n)
+	{
+		if (((unsigned char *)s)[i] == (unsigned char)c)
+			return ((char *)(s + i));
+		i++;
+	}
+	return (NULL);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_memcmp" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+
+	i = 0;
+	str1 = ((unsigned char *)s1);
+	str2 = ((unsigned char *)s2);
+	while ((str1 || str2) && i < n)
+	{
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		i++;
+		str1++;
+		str2++;
+	}
+	return (0);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_memcpy" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t			i;
+	unsigned char	*d;
+	unsigned char	*s;
+
+	if (n && !dst && !src)
+		return (NULL);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	i = 0;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dst);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_memmove" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	int	i;
+
+	if (n && !dest && !src)
+		return (NULL);
+	if (dest > src)
+	{
+		i = (int)n - 1;
+		while (i >= 0)
+		{
+			*(char *)(dest + i) = *(char *)(src + i);
+			i--;
+		}
+	}
+	else
+	{
+		i = 0;
+		while (i < (int)n)
+		{
+			*(char *)(dest + i) = *(char *)(src + i);
+			i++;
+		}
+	}
+	return (dest);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_memset" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		ptr[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_putchar_fd" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_putendl_fd" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	size_t	i;
+	char	ret;
+
+	ret = '\n';
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+	ft_putchar_fd(ret, fd);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_putnbr_fd" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		write(fd, "-2", 2);
+		n = 147483648;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = n * -1;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	ft_putchar_fd((n % 10 + 48), fd);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_putstr_fd" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_split" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_count_world(char const*s, char c)
+{
+	int	i;
+	int	size;
+
+	size = 0;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c)
+		{
+			size++;
+			while (s[i] != c && s[i] != '\0')
+				i++;
+		}
+		else
+			i++;
+	}
+	return (size);
+}
+
+char	*skipchar(char const *s, char c)
+{
+	while (*s == c && *s != '\0')
+		s++;
+	return ((char *)s);
+}
+
+char	*ft_copy_word(char const *s, char c)
+{
+	int		i;
+	int		j;
+	char	*copy;
+
+	i = 0;
+	j = 0;
+	while (s[i] != '\0' && s[i] != c)
+	{
+		i++;
+	}
+	copy = (char *)malloc(sizeof(char) * (i + 1));
+	if (!copy)
+		return (NULL);
+	while (j < i)
+	{
+		copy[j] = s[j];
+		j++;
+	}
+	copy[j] = 0;
+	return (copy);
+}
+
+int	skipword(char const *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != c && s[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**array;
+	int		count;
+	int		i;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	s = skipchar(s, c);
+	count = ft_count_world(s, c);
+	array = (char **)malloc(sizeof(char *) * (count + 1));
+	if (!array)
+		return (NULL);
+	while (i < count)
+	{
+		array[i] = ft_copy_word(s, c);
+		if (!array[i])
+			return (NULL);
+		s = skipchar(s + skipword(s, c), c);
+		i++;
+	}
+	array[i] = NULL;
+	return (array);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strchr" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+char	*ft_strchr(const char *str, int c)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == (char)c)
+			return ((char *)(str + i));
+		i++;
+	}
+	if (str[i] == (char)c)
+		return ((char *)(str + i));
+	return (NULL);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strdup" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+char	*ft_strdup(const char *s)
+{
+	char	*new;
+	size_t	i;
+
+	i = 0;
+	new = (char *)malloc(ft_strlen(s) * sizeof(char) + 1);
+	if (!new)
+		return (NULL);
+	while (s[i])
+	{
+		new[i] = *(char *)(s + i);
+		i++;
+	}
+	new[i] = 0;
+	return (new);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_striteri" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	size_t	i;
+
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strjoin" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+char	*ft_strjoin(const char *s1, const char *s2)
+{
+	char	*ptr;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	ptr = (char *)malloc(((ft_strlen(s1) + ft_strlen(s2)) + 1) * sizeof(char));
+	if (!ptr)
+		return (NULL);
+	while (s1[i])
+	{
+		ptr[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		ptr[i] = s2[j];
+		j++;
+		i++;
+	}
+	ptr[i] = 0;
+	return (ptr);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strlcat" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	j;
+	size_t	k;
+
+	i = ft_strlen(src);
+	j = ft_strlen(dst);
+	k = i + j;
+	if (size <= j)
+		return (i + size);
+	i = 0;
+	while (src[i] != 0 && j < size - 1)
+	{
+		dst[j] = src[i];
+		i++;
+		j++;
+	}
+	dst[j] = 0;
+	return (k);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strlcpy" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (size > 0)
+	{
+		while (src[i] != 0 && i < size - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen((char *)src));
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strlen" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strmapi" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*res;
+	size_t	i;
+
+	i = 0;
+	if (!s || !f)
+		return (NULL);
+	res = ft_strdup(s);
+	if (!res)
+		return (NULL);
+	while (s[i])
+	{
+		res[i] = f(i, s[i]);
+		i++;
+	}
+	res[i] = 0;
+	return (res);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strncmp" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	if (size == 0)
+		return (0);
+	while ((s1[i] != '\0' || s2[i] != '\0') && size - 1 > i && s1[i] == s2[i])
+	{
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strnstr" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	i;
+	int		j;
+	size_t	temp;
+
+	i = 0;
+	if (!needle[i])
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
+	{
+		j = 0;
+		if (haystack[i] == needle[j])
+		{
+			temp = i;
+			while (haystack[temp] && haystack[temp] == needle[j] && temp < len)
+			{
+				temp++;
+				j++;
+				if (j == ft_strlen(needle))
+					return ((char *)haystack + i);
+			}
+		}
+		i++;
+	}
+	return (NULL);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strrchr" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
+{
+	size_t	i;
+	char	*find;
+
+	find = NULL;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (unsigned char) c)
+			find = ((char *)(s + i));
+		i++;
+	}
+	if (s[i] == (unsigned char)c)
+		find = (char *)(s + i);
+	return (find);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_strtrim" class="file-source">
+                                        <pre><code>#include "libft.h"
+
+char	*ft_strtrim(const char *s1, const char *set)
+{
+	size_t	i;
+	size_t	j;
+	char	*ptr;
+
+	if (!s1 || !set)
+		return (NULL);
+	i = 0;
+	j = ft_strlen(s1);
+	if (j == 0)
+		return (ft_strdup(""));
+	j--;
+	while (ft_strchr(set, s1[i]) && i <= j)
+		i++;
+	while (ft_strchr(set, s1[j]) && j > i)
+		j--;
+	if (i > j)
+		return (ft_strdup(""));
+	ptr = (char *)malloc(sizeof(char) * (j - i + 2));
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, &s1[i], j - i + 2);
+	return (ptr);
+}</code></pre>
+                                    </div>
+                                    <div id="file-ft_substr" class="file-source">
+                                        <pre><code>char	*ft_substr(const char *s, unsigned int start, size_t len)
+{
+	char	*ptr;
+	size_t	i;
+
+	if ((size_t)start >= (size_t)ft_strlen(s))
+		len = 0;
+	else if ((size_t)start + len > (size_t)ft_strlen(s))
+		len = ft_strlen(s) - start;
+	ptr = (char *)malloc((len + 1) * sizeof(char));
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		ptr[i] = *(char *)(s + i + start);
+		i++;
+	}
+	ptr[i] = 0;
+	return (ptr);
+}</code></pre>
+                                    </div>
+                                    <div id="file-libft_h" class="file-source">
+                                        <pre><code>#ifndef LIBFT_H
+# define LIBFT_H
+
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <ctype.h>
+# include <stdio.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
+
+void	ft_bzero(void *s, size_t n);
+void	*ft_memset(void *s, int c, size_t n);
+int		ft_atoi(const char *nptr);
+int		ft_isalnum(int c);
+int		ft_isalpha(int c);
+int		ft_isascii(int c);
+int		ft_isdigit(int c);
+int		ft_isprint(int c);
+void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
+void	*ft_memcpy(void *dst, void const *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t size);
+void	*ft_memset(void *s, int c, size_t n);
+char	*ft_strchr(const char *str, int c);
+int		ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+int		ft_strlen(const char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t size);
+char	*ft_strrchr(const char *str, int c);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strdup(const char *s);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strtrim(const char *s1, const char *set);
+char	*ft_itoa(int n);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_putchar_fd(char c, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
+char	**ft_split(char const *s, char c);
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+
+#endif</code></pre>
+                                    </div>
+                                    <div id="file-makefile" class="file-source">
+                                        <pre><code>NAME = libft.a
+
+SOURCES = \
+	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+	ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
+	ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
+	ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c \
+	ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
+	ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
+	ft_putendl_fd.c ft_putnbr_fd.c \
+
+BSOURCES = \
+	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
+
+OBJECTS = $(SOURCES:.c=.o)
+BOBJECTS = $(BSOURCES:.c=.o)
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+all: $(NAME)
+
+$(NAME): $(OBJECTS)
+	$(AR) -r $@ $?
+
+bonus: $(BOBJECTS)
+	$(AR) -r $(NAME) $?
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $?
+
+clean:
+	rm -f $(OBJECTS) $(BOBJECTS)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all bonus clean fclean re</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Images -->
+                        <div class="tab-content" id="images">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/libft</span>$ find . -name "*.png" -o -name "*.jpg"
+                                </p>
+                            </div>
+                            <div class="project-images">
+                                <div class="images-grid">
+                                    <div class="image-item">
+                                        <img src="../assets/projects/libft-tests.png" alt="libft - Tests unitaires" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>tests_results.png
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/libft-norminette.png" alt="libft - Norminette OK" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>norminette_check.png
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/libft-grade.png" alt="libft - Note finale" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>final_grade.png
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="terminal-cursor">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/libft</span>$ <span class="cursor-blink">_</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour les images -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>$ echo "&copy; 2025 Lucien Da Cunha. Tous droits réservés." | cat</p>
+    </footer>
+
+    <!-- Bouton Mode Confort -->
+    <button id="colorModeBtn" class="color-mode-btn" title="Mode confort">
+        <span class="mode-icon">●</span>
+        <span class="mode-label">Soft</span>
+    </button>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

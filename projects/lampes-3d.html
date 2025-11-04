@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lampes 3D - Création de lampes personnalisées par impression 3D">
+    <title>Lampes 3D | Lucien Da Cunha</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Effet Matrix Rain Global -->
+    <div class="matrix-rain-bg"></div>
+    
+    <!-- Header / Navigation -->
+    <header>
+        <nav>
+            <!-- Menu Hamburger Button (à gauche sur mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <div class="logo" id="logo">
+                <span class="logo-prompt">root@lampes-3d:~$</span>
+                <span class="logo-text">LD</span>
+            </div>
+
+            <div class="nav-container" id="navContainer">
+                <ul class="nav-links">
+                    <li><a href="../index.html#accueil" class="nav-link" data-fr="~/home" data-en="~/home"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Accueil" data-en="Home">Accueil</span></a></li>
+                    <li><a href="../index.html#a-propos" class="nav-link" data-fr="about.txt" data-en="about.txt"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="À propos" data-en="About">À propos</span></a></li>
+                    <li><a href="../index.html#diplomes" class="nav-link" data-fr="diplomes/" data-en="diplomas/"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Diplômes" data-en="Diplomas">Diplômes</span></a></li>
+                    <li><a href="../index.html#competences" class="nav-link" data-fr="./skills.sh" data-en="./skills.sh"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Compétences" data-en="Skills">Compétences</span></a></li>
+                    <li><a href="../index.html#projets" class="nav-link" data-fr="git log" data-en="git log"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Projets" data-en="Projects">Projets</span></a></li>
+                    <li><a href="../index.html#contact" class="nav-link" data-fr="mail -s" data-en="mail -s"><span class="nav-prefix">$</span> <span class="nav-text" data-fr="Contact" data-en="Contact">Contact</span></a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="social-links">
+                        <a href="https://github.com/Lucien-Da-Cunha" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" data-terminal="github">
+                            <span class="terminal-label">git://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lucien-da-cunha-69b300227/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" data-terminal="linkedin">
+                            <span class="terminal-label">https://</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="../assets/cv.pdf" download class="btn-cv" data-fr="wget cv.pdf" data-en="wget cv.pdf">
+                        <span class="btn-prefix">$</span>
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 12L3 7L4.4 5.6L7 8.2V0H9V8.2L11.6 5.6L13 7L8 12Z" fill="currentColor"/>
+                            <path d="M0 14H16V16H0V14Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <div class="language-switcher">
+                        <button class="lang-btn" data-lang="fr">
+                            <span class="lang-prefix">--lang=</span>FR
+                        </button>
+                        <button class="lang-btn active" data-lang="en">
+                            <span class="lang-prefix">--lang=</span>EN
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Projet Hero -->
+    <section class="project-hero section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~$ cd projects/lampes-3d/</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="terminal-command">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/lampes-3d</span>$ ls -la
+                    </p>
+                    <div class="project-info">
+                        <h1 class="project-title">Lampes 3D</h1>
+                        <p class="project-description">Création de lampes personnalisées par impression 3D - Modèles originaux</p>
+                        <div class="project-meta">
+                            <span class="project-date">📅 Juillet 2024</span>
+                            <span class="project-tech">🛠️ Impression 3D, Design, Fusion 360</span>
+                            <span class="project-status">📊 Actif</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Onglets Projet -->
+    <section class="project-tabs section">
+        <div class="container">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                    <span class="terminal-title">lucien@portfolio:~/projects/lampes-3d$ ./explore.sh</span>
+                </div>
+                <div class="terminal-body">
+                    <!-- Navigation des onglets -->
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="detail">
+                            <span class="terminal-prompt">$</span> cat README.md
+                        </button>
+                        <button class="tab-btn" data-tab="code">
+                            <span class="terminal-prompt">$</span> ls designs/
+                        </button>
+                        <button class="tab-btn" data-tab="images">
+                            <span class="terminal-prompt">$</span> find . -name "*.jpg"
+                        </button>
+                    </div>
+
+                    <!-- Contenu des onglets -->
+                    <div class="tabs-content">
+                        <!-- Onglet Détail -->
+                        <div class="tab-content active" id="detail">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/lampes-3d</span>$ cat README.md
+                                </p>
+                            </div>
+                            <div class="project-detail">
+                                <h3>📋 Description détaillée</h3>
+                                <p>Projet de création de lampes décoratives uniques par impression 3D. Je conçois et réalise des lampes personnalisées en utilisant uniquement des modèles originaux ou libre de droits. Chaque pièce est entièrement imprimée en 3D et assemblée à la main avec des composants électroniques de qualité.</p>
+                                
+                                <h3>🎯 Objectifs</h3>
+                                <ul>
+                                    <li>Créer des designs uniques et originaux</li>
+                                    <li>Maîtriser la chaîne complète de production 3D</li>
+                                    <li>Respecter les droits d'auteur et licences</li>
+                                    <li>Développer des compétences en design industriel</li>
+                                    <li>Intégrer électronique et impression 3D</li>
+                                    <li>Proposer des créations personnalisées</li>
+                                </ul>
+                                
+                                <h3>⚙️ Technologies utilisées</h3>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Impression 3D</span>
+                                    <span class="tech-tag">Fusion 360</span>
+                                    <span class="tech-tag">PLA/PETG</span>
+                                    <span class="tech-tag">LED</span>
+                                    <span class="tech-tag">Électronique</span>
+                                    <span class="tech-tag">Design</span>
+                                </div>
+                                
+                                <h3>🔍 Processus de création</h3>
+                                <ul>
+                                    <li><strong>Conception :</strong> Design original avec Fusion 360</li>
+                                    <li><strong>Modélisation :</strong> Optimisation pour l'impression 3D</li>
+                                    <li><strong>Impression :</strong> PLA/PETG selon le rendu souhaité</li>
+                                    <li><strong>Post-traitement :</strong> Ponçage, peinture si nécessaire</li>
+                                    <li><strong>Électronique :</strong> Intégration LED et circuits</li>
+                                    <li><strong>Assemblage final :</strong> Test et finitions</li>
+                                </ul>
+                                
+                                <h3>⚖️ Éthique et licences</h3>
+                                <p><strong>Important :</strong> Tous les modèles utilisés sont soit des créations originales, soit des modèles libres de droits. Aucun modèle sous licence commerciale n'est utilisé à des fins de vente. Respect strict des droits d'auteur et des conditions d'utilisation.</p>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Code/Designs -->
+                        <div class="tab-content" id="code">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/lampes-3d</span>$ ls -la designs/
+                                </p>
+                            </div>
+                            <div class="project-code">
+                                <h3>📁 Portfolio des créations</h3>
+                                <div class="file-explorer">
+                                    <div class="file-tree-container">
+                                        <!-- Designs originaux -->
+                                        <div class="file-item folder" data-path="designs">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">designs/</span>
+                                        </div>
+                                        <div class="file-item folder" data-path="originaux">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">├── originaux/</span>
+                                        </div>
+                                        <div class="file-item file" data-file="lampe_geometrique" data-path="designs/originaux/lampe_geometrique.f3d">
+                                            <span class="file-icon">🔷</span>
+                                            <span class="file-name">│   ├── lampe_geometrique.f3d</span>
+                                        </div>
+                                        <div class="file-item file" data-file="lampe_nature" data-path="designs/originaux/lampe_nature.f3d">
+                                            <span class="file-icon">🌿</span>
+                                            <span class="file-name">│   ├── lampe_nature.f3d</span>
+                                        </div>
+                                        <div class="file-item file" data-file="lampe_moderne" data-path="designs/originaux/lampe_moderne.f3d">
+                                            <span class="file-icon">✨</span>
+                                            <span class="file-name">│   └── lampe_moderne.f3d</span>
+                                        </div>
+                                        
+                                        <!-- Modèles libres -->
+                                        <div class="file-item folder" data-path="libre_droits">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">├── libre_droits/</span>
+                                        </div>
+                                        <div class="file-item file" data-file="license_cc" data-path="designs/libre_droits/LICENSE.txt">
+                                            <span class="file-icon">📄</span>
+                                            <span class="file-name">│   ├── LICENSE.txt</span>
+                                        </div>
+                                        <div class="file-item file" data-file="sources" data-path="designs/libre_droits/sources.md">
+                                            <span class="file-icon">📝</span>
+                                            <span class="file-name">│   └── sources.md</span>
+                                        </div>
+                                        
+                                        <!-- Fichiers techniques -->
+                                        <div class="file-item folder" data-path="production">
+                                            <span class="file-icon">📁</span>
+                                            <span class="file-name">├── production/</span>
+                                        </div>
+                                        <div class="file-item file" data-file="settings_print" data-path="production/print_settings.ini">
+                                            <span class="file-icon">⚙️</span>
+                                            <span class="file-name">│   ├── print_settings.ini</span>
+                                        </div>
+                                        <div class="file-item file" data-file="electronics" data-path="production/electronics_guide.md">
+                                            <span class="file-icon">🔌</span>
+                                            <span class="file-name">│   └── electronics_guide.md</span>
+                                        </div>
+                                        
+                                        <!-- Documentation -->
+                                        <div class="file-item file" data-file="readme" data-path="README.md">
+                                            <span class="file-icon">📖</span>
+                                            <span class="file-name">└── README.md</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="file-content-container">
+                                        <div class="file-content-header">
+                                            <span class="current-file">Sélectionnez un fichier à gauche</span>
+                                            <button class="copy-btn" id="copyCurrentFile" style="display: none;">Copy</button>
+                                        </div>
+                                        <div class="file-content" id="fileContent">
+                                            <div class="file-placeholder">
+                                                <p>$ cat &lt;filename&gt;</p>
+                                                <p>Cliquez sur un fichier dans l'arborescence pour voir son contenu</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Contenus des fichiers (cachés par défaut) -->
+                                <div class="hidden-file-contents">
+                                    <div id="file-lampe_geometrique" class="file-source">
+                                        <pre><code># Lampe Géométrique - Design Original
+
+## Description
+Design minimaliste avec formes géométriques entrelacées
+Jeu d'ombres et de lumière à travers des découpes précises
+
+## Spécifications
+- Matériau : PLA blanc
+- Hauteur : 25cm
+- Éclairage : LED 12V blanc chaud
+- Temps d'impression : 8h
+- Support : Non requis
+
+## Paramètres Fusion 360
+- Épaisseur parois : 2mm
+- Résolution STL : 0.1mm
+- Découpes optimisées pour impression</code></pre>
+                                    </div>
+                                    
+                                    <div id="file-lampe_nature" class="file-source">
+                                        <pre><code># Lampe Nature - Inspiration Organique
+
+## Description
+Design inspiré des formes naturelles
+Motifs de feuilles et branches stylisées
+
+## Spécifications
+- Matériau : PETG translucide vert
+- Hauteur : 30cm
+- Éclairage : LED RGB programmable
+- Temps d'impression : 12h
+- Support : Minimal (overhangs < 45°)
+
+## Caractéristiques
+- Effet lumineux imitant la canopée
+- Base stable en PLA noir
+- Câblage intégré dans la structure</code></pre>
+                                    </div>
+                                    
+                                    <div id="file-lampe_moderne" class="file-source">
+                                        <pre><code># Lampe Moderne - Style Contemporain
+
+## Description
+Lignes épurées et design futuriste
+Diffusion homogène de la lumière
+
+## Spécifications
+- Matériau : PETG blanc opalescent
+- Hauteur : 20cm
+- Éclairage : LED strip intégrée
+- Temps d'impression : 6h
+- Support : Non requis
+
+## Innovation
+- Technique de diffusion optimisée
+- Assemblage sans vis ni colle
+- Compatible dimmer tactile</code></pre>
+                                    </div>
+                                    
+                                    <div id="file-license_cc" class="file-source">
+                                        <pre><code># LICENCES ET ATTRIBUTIONS
+
+## Modèles Creative Commons utilisés
+
+### Lampe Voronoi Base
+- Source : Thingiverse Creative Commons
+- Auteur : MakerBot
+- Licence : CC BY 4.0
+- Modifications : Adaptation pour LED intégrée
+
+### Support Hexagonal
+- Source : MyMiniFactory CC
+- Auteur : PrintableProp
+- Licence : CC BY-SA 4.0
+- Usage : Base pour designs originaux
+
+## Respect des licences
+Tous les modèles CC sont utilisés conformément
+aux termes de leur licence respective.
+Attribution complète fournie à chaque client.</code></pre>
+                                    </div>
+                                    
+                                    <div id="file-sources" class="file-source">
+                                        <pre><code># SOURCES ET RÉFÉRENCES
+
+## Plateformes de modèles libres
+- Thingiverse (Creative Commons)
+- MyMiniFactory (CC et libres)
+- Cults3D (modèles gratuits)
+
+## Inspiration design
+- Architecture moderne
+- Art géométrique
+- Biomimétisme
+
+## Communauté
+- Forums Reddit 3DPrinting
+- Discord FrenchMakers
+- Groupes Facebook impression 3D France
+
+## Veille technologique
+- YouTube : Teaching Tech
+- Blogs : Prusa, Ultimaker
+- Revues : 3D Printing Magazine</code></pre>
+                                    </div>
+                                    
+                                    <div id="file-settings_print" class="file-source">
+                                        <pre><code># PARAMÈTRES D'IMPRESSION OPTIMISÉS
+
+## Profil PLA Standard
+Layer Height: 0.2mm
+Infill: 15%
+Print Speed: 50mm/s
+Nozzle Temp: 210°C
+Bed Temp: 60°C
+Supports: Auto-generated
+
+## Profil PETG Translucide
+Layer Height: 0.15mm
+Infill: 10%
+Print Speed: 35mm/s
+Nozzle Temp: 235°C
+Bed Temp: 70°C
+Retraction: 5mm @ 35mm/s
+
+## Post-traitement
+- Retrait supports avec précaution
+- Ponçage léger si nécessaire
+- Test électronique avant assemblage</code></pre>
+                                    </div>
+                                    
+                                    <div id="file-electronics" class="file-source">
+                                        <pre><code># GUIDE ÉLECTRONIQUE
+
+## Composants Standards
+- LED 12V blanc chaud (3000K)
+- Transformateur 230V -> 12V 1A
+- Interrupteur tactile
+- Câble silicone souple
+
+## Montage
+1. Perçage précis pour LED
+2. Soudure avec étain sans plomb
+3. Isolation gaine thermorétractable
+4. Test continuité multimètre
+
+## Sécurité
+- Classe II (double isolation)
+- Respect normes CE
+- Vérification avant livraison
+
+## Options avancées
+- Dimmer PWM
+- LED RGB avec télécommande
+- Capteur crépusculaire</code></pre>
+                                    </div>
+                                    
+                                    <div id="file-readme" class="file-source">
+                                        <pre><code># PROJET LAMPES 3D
+
+## Vue d'ensemble
+Création de lampes décoratives par impression 3D
+Focus sur l'originalité et le respect des droits
+
+## Philosophie
+- Création originale privilégiée
+- Modèles libres de droits uniquement
+- Transparence totale sur les sources
+- Qualité et durabilité
+
+## Processus complet
+Design -> Impression -> Électronique -> Assemblage -> Test
+
+## Contact
+Pour commandes personnalisées ou informations
+Email: lucien.dacunha@gmail.com
+
+## Portfolio
+Voir onglet "Images" pour exemples réalisés</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Onglet Images -->
+                        <div class="tab-content" id="images">
+                            <div class="tab-header">
+                                <p class="terminal-command">
+                                    <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/lampes-3d</span>$ find . -name "*.jpg" -o -name "*.png"
+                                </p>
+                            </div>
+                            <div class="project-images">
+                                <div class="images-grid">
+                                    <div class="image-item">
+                                        <img src="../assets/projects/lampe-geometrique-allumee.jpg" alt="Lampe géométrique allumée" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>lampe_geometrique_on.jpg
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/lampe-nature-eteinte.jpg" alt="Lampe nature éteinte - détails" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>lampe_nature_details.jpg
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/lampe-moderne-rgb.jpg" alt="Lampe moderne avec LED RGB" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>lampe_moderne_rgb.jpg
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/atelier-impression-3d.jpg" alt="Atelier d'impression 3D" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>atelier_workspace.jpg
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/process-assemblage.jpg" alt="Processus d'assemblage électronique" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>assembly_process.jpg
+                                        </div>
+                                    </div>
+                                    <div class="image-item">
+                                        <img src="../assets/projects/collection-lampes.jpg" alt="Collection de lampes terminées" onclick="openImageModal(this)">
+                                        <div class="image-caption">
+                                            <span class="terminal-prompt">./</span>collection_finale.jpg
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="terminal-cursor">
+                        <span class="terminal-user">lucien@portfolio</span>:<span class="terminal-path">~/projects/lampes-3d</span>$ <span class="cursor-blink">_</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour les images -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>$ echo "&copy; 2025 Lucien Da Cunha. Tous droits réservés." | cat</p>
+    </footer>
+
+    <!-- Bouton Mode Confort -->
+    <button id="colorModeBtn" class="color-mode-btn" title="Mode confort">
+        <span class="mode-icon">●</span>
+        <span class="mode-label">Soft</span>
+    </button>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
